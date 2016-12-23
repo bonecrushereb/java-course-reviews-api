@@ -1,11 +1,9 @@
 package com.teamtreehouse.review;
 
 import com.teamtreehouse.core.BaseEntity;
+import com.teamtreehouse.course.Course;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by BenNolan on 12/23/16.
@@ -13,13 +11,27 @@ import javax.persistence.Id;
 
 @Entity
 public class Review extends BaseEntity{
+    private int Rating;
+    private String description;
+    @ManyToOne
+    private Course course;
 
     protected Review() {
         super();
     }
 
-    private int Rating;
-    private String description;
+    public Review(int rating, String description) {
+        Rating = rating;
+        this.description = description;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 
     public int getRating() {
         return Rating;
