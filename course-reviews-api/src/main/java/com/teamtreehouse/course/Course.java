@@ -4,6 +4,7 @@ import com.teamtreehouse.core.BaseEntity;
 import com.teamtreehouse.review.Review;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Entity
 public class Course extends BaseEntity {
+    @NotNull
     private String title;
     private String url;
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
